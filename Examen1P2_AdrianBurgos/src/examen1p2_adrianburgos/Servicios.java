@@ -9,6 +9,15 @@ public class Servicios {
     private String empresa;
     private ArrayList contenido;
 
+    public Servicios(String nombre, double mensualidad, String calificacion, String fecha, String empresa) {
+        this.nombre = nombre;
+        this.mensualidad = mensualidad;
+        this.calificacion = calificacion;
+        this.fecha = fecha;
+        this.empresa = empresa;
+    }
+    
+
     public String getNombre() {
         return nombre;
     }
@@ -55,6 +64,17 @@ public class Servicios {
 
     public void setContenido(ArrayList contenido) {
         this.contenido = contenido;
+    }
+
+    @Override
+    public String toString() {
+        String servicios;
+        return "Nombre: "+nombre+"\n"
+                + "Mensualidad: "+mensualidad+"\n"
+                + "Calificacion: "+calificacion+"\n"
+                + "Fecha: "+fecha+"\n"
+                + "Empresa: "+empresa+"\n"
+                + "Contenido:\n"+contenido;
     }
     
 }

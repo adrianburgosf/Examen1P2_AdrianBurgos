@@ -2,7 +2,7 @@ package examen1p2_adrianburgos;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Examen1P2_AdrianBurgos extends Gui {
+public class Examen1P2_AdrianBurgos {
 
     static Scanner scan = new Scanner(System.in);
     static ArrayList <Usuarios> listausuarios = new ArrayList();
@@ -71,12 +71,81 @@ public class Examen1P2_AdrianBurgos extends Gui {
             } 
             else if (listausuarios.get(i).getUser().equals(user)
                     && listausuarios.get(i).getPassword().equals(pass)) {
-                System.out.println("hola");
+                cliente(i);
                 error = true;
             }
         }
         if(error == false) {
             System.out.println("Usuario o contraseña incorrecta");
         }
+    }
+    
+    public static void cliente(int index) {
+        int opcion = 0;
+        while (opcion != 4) {
+        System.out.println();
+            System.out.print("======Sub-Menu======\n"
+                    + "1. Ver servicios de streaming\n"
+                    + "2. Ver los servicios a los que me he suscrito\n"
+                    + "3. Modificar mi informacion\n"
+                    + "4. Logout\n"
+                    + "Ingrese Opcion: ");
+            opcion = scan.nextInt();
+            System.out.println();
+            
+            switch (opcion) {
+                case 1: {
+                    System.out.println();
+                    for (int i = 0; i < listaservicios.size(); i++) {
+                        System.out.print(i+") "+listaservicios.get(i));
+                        System.out.println();
+                        System.out.print("Ingrese index del servicio al que desea suscribirse: ");
+                        int num = scan.nextInt();
+                        listausuarios.get(index).getSuscripciones().add(((Servicios)listaservicios.get(index)).getNombre());
+                    }
+                    break;
+                }
+                case 2: {
+                    System.out.println("Usted esta suscrito a los siguientes servicios: "+((Usuarios)listausuarios.get(index)).getSuscripciones());
+                    break;
+                }
+                case 3: {
+                    System.out.print("Ingrese nuevo nombre: ");
+                    String x = scan.nextLine();
+                    ((Usuarios)listausuarios.get(index)).setNombre(scan.nextLine());
+                    System.out.print("Ingrese nuevo apellido: ");
+                    ((Usuarios)listausuarios.get(index)).setApellido(scan.nextLine());
+                    System.out.print("Ingrese nuevo correo: ");
+                    ((Usuarios)listausuarios.get(index)).setCorreo(scan.nextLine());
+                    System.out.print("Ingrese nuevo plan: ");
+                    ((Usuarios)listausuarios.get(index)).setPlan(scan.nextLine());
+                    System.out.print("Ingrese nuevo numero: ");
+                    ((Usuarios)listausuarios.get(index)).setNumero(scan.nextInt());
+                    break;
+                }
+                case 4: {
+                }
+                default: System.out.println("Opcion invalida");
+            }
+        }
+    }
+    
+    public static void david(int index) {
+        System.out.println();
+            System.out.print("======Sub-Menu======\n"
+                    + "1. Agregar servicio\n"
+                    + "2. Modifcar servicio\n"
+                    + "3. Eliminar servicio\n"
+                    + "4. Salir\n"
+                    + "Ingrese Opcion: ");
+            int opcion = scan.nextInt();
+            System.out.println();
+    }
+    
+    public static ArrayList getServicios() {
+        return listaservicios;
+    }
+    public static void setServicios(ArrayList lista) {
+        listausuarios = lista;
     }
 }
