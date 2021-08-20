@@ -124,6 +124,7 @@ public class Examen1P2_AdrianBurgos {
                     break;
                 }
                 case 4: {
+                    break;
                 }
                 default: System.out.println("Opcion invalida");
             }
@@ -131,21 +132,139 @@ public class Examen1P2_AdrianBurgos {
     }
     
     public static void david(int index) {
+        int opcion = 0;
+        while (opcion != 5) {
         System.out.println();
-            System.out.print("======Sub-Menu======\n"
+            System.out.print("==Bienvenido David==\n"
                     + "1. Agregar servicio\n"
-                    + "2. Modifcar servicio\n"
-                    + "3. Eliminar servicio\n"
-                    + "4. Salir\n"
+                    + "2. Agregar contenido a un servicio"
+                    + "3. Modifcar servicio\n"
+                    + "4. Eliminar servicio\n"
+                    + "5. Logout\n"
                     + "Ingrese Opcion: ");
-            int opcion = scan.nextInt();
+            opcion = scan.nextInt();
             System.out.println();
+            
+            switch (opcion) {
+                case 1: {
+                    System.out.print("Ingrese nombre: ");
+                    String x = scan.nextLine();
+                    String nombre = scan.nextLine();
+                    System.out.print("Ingrese calificacion: ");
+                    String calificacion = scan.nextLine();
+                    System.out.print("Ingrese fecha: ");
+                    String fecha = scan.nextLine();
+                    System.out.print("Ingrese empresa: ");
+                    String empresa = scan.nextLine();
+                    System.out.print("Ingrese mensualidad: ");
+                    double mensualidad = scan.nextDouble();
+                    Servicios f = new Servicios(nombre, mensualidad, calificacion, fecha, empresa);
+                    listaservicios.add(f);
+                    break;
+                }
+                
+                case 2: {
+                    int opcion3 = 0;
+                    System.out.print("Ingrese index del servicio al que desea agregarle contenido: ");
+                    int index2 = scan.nextInt();
+                    while (opcion3 != 4) {
+                        System.out.println();
+                        System.out.print("==Contenido==\n"
+                                + "1. Añadir Serie\n"
+                                + "2. Añadir Miniserie\n"
+                                + "3. Añadir Pelicula\n"
+                                + "4. Salir\n"
+                                + "Ingrese Opcion: ");
+                        opcion3 = scan.nextInt();
+                        System.out.println();
+                        contenidoagregar(opcion3, index2);
+                    }
+                    break;
+                }
+                case 3: {
+                    System.out.print("Ingrese index del servicio que desea modificar: ");
+                    int subindex = scan.nextInt();
+                    System.out.print("Ingrese nuevo nombre: ");
+                    String x = scan.nextLine();
+                    ((Servicios)listaservicios.get(subindex)).setNombre(scan.nextLine());
+                    System.out.print("Ingrese nueva calificacion: ");
+                    ((Servicios)listaservicios.get(subindex)).setCalificacion(scan.nextLine());
+                    System.out.print("Ingrese nueva fecha: ");
+                    ((Servicios)listaservicios.get(subindex)).setFecha(scan.nextLine());
+                    System.out.print("Ingrese nueva empresa: ");
+                    ((Servicios)listaservicios.get(subindex)).setEmpresa(scan.nextLine());
+                    System.out.print("Ingrese nueva mensualidad: ");
+                    ((Servicios)listaservicios.get(subindex)).setMensualidad(scan.nextDouble());
+                    break;
+                }
+                case 4: {
+                    System.out.print("Ingrese index del servicio que desea eliminar: ");
+                    int index2 = scan.nextInt();
+                    listaservicios.remove(index2);
+                    break;
+                }
+                case 5: {
+                    break;
+                }
+                default: System.out.println("Opcion invalida");
+            }
+        }
     }
     
-    public static ArrayList getServicios() {
-        return listaservicios;
-    }
-    public static void setServicios(ArrayList lista) {
-        listausuarios = lista;
+    public static void contenidoagregar(int opcion, int index) {
+        switch (opcion) {
+            case 1: {
+                System.out.print("Ingrese nombre: ");
+                    String x = scan.nextLine();
+                    String nombre = scan.nextLine();
+                    System.out.print("Ingrese clasificacion por edad: ");
+                    String clasificacion = scan.nextLine();
+                    System.out.print("Ingrese año de estreno: ");
+                    int estreno = scan.nextInt();
+                    System.out.print("Ingrese cantidad de actores: ");
+                    int actores = scan.nextInt();
+                    System.out.print("Ingrese cantidad de temporadas: ");
+                    int temporadas = scan.nextInt();
+                    Series s = new Series (nombre, temporadas, clasificacion, estreno, actores);
+                    ((Servicios)listaservicios.get(index)).getContenido().add(s);
+                break;
+            }
+            case 2: {
+                 System.out.print("Ingrese nombre: ");
+                    String x = scan.nextLine();
+                    String nombre = scan.nextLine();
+                    System.out.print("Ingrese genero: ");
+                    String genero = scan.nextLine();
+                    System.out.print("Ingrese descripcion breve de la miniserie: ");
+                    String plot = scan.nextLine();
+                    System.out.print("Ingrese duracion de capitulos: ");
+                    int duracion = scan.nextInt();
+                    System.out.print("Ingrese cantidad de temporadas: ");
+                    int temporadas = scan.nextInt();
+                    Miniseries s = new Miniseries (nombre, temporadas, genero, duracion, plot);
+                    ((Servicios)listaservicios.get(index)).getContenido().add(s);
+                break;
+            }
+            case 3: {
+                System.out.print("Ingrese nombre: ");
+                    String x = scan.nextLine();
+                    String nombre = scan.nextLine();
+                    System.out.print("Ingrese fecha de estreno en salas: ");
+                    String fechasa = scan.nextLine();
+                    System.out.print("Ingrese fecha de estreno en streaming: ");
+                    String fechast = scan.nextLine();
+                    System.out.print("Ingrese una breve descripcion: ");
+                    String plot= scan.nextLine();
+                    System.out.print("Ingrese duracion de la pelicula en minutos: ");
+                    int duracion = scan.nextInt();
+                    Peliculas s = new Peliculas (nombre, duracion, fechasa, fechast, plot);
+                    ((Servicios)listaservicios.get(index)).getContenido().add(s);
+                break;
+            }
+            case 4: {
+                break;
+            }
+            default: System.out.println("Opcion invalida");
+        }
     }
 }
