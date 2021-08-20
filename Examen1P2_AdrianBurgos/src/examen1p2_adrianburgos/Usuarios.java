@@ -11,6 +11,21 @@ public class Usuarios {
     private String plan;
     private ArrayList <Servicios> suscripciones;
 
+    public Usuarios(String user, String password) {
+        this.user = user;
+        this.password = password;
+    }
+
+    public Usuarios(String user, String password, String nombre, String apellido, String correo, int numero, String plan) {
+        this.user = user;
+        this.password = password;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.numero = numero;
+        this.plan = plan;
+    }
+
     public String getUser() {
         return user;
     }
