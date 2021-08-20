@@ -65,7 +65,7 @@ public class Examen1P2_AdrianBurgos {
         for (int i = 0; i < listausuarios.size(); i++) {
             if (user.equals("david")
                     && pass.equals("1234")) {
-                System.out.println("david");
+                david();
                 error = true;
                 break;
             } 
@@ -99,10 +99,11 @@ public class Examen1P2_AdrianBurgos {
                     for (int i = 0; i < listaservicios.size(); i++) {
                         System.out.print(i+") "+listaservicios.get(i));
                         System.out.println();
-                        System.out.print("Ingrese index del servicio al que desea suscribirse: ");
-                        int num = scan.nextInt();
-                        listausuarios.get(index).getSuscripciones().add(((Servicios)listaservicios.get(index)).getNombre());
+                        System.out.println();
                     }
+                    System.out.print("Ingrese index del servicio al que desea suscribirse: ");
+                    int num = scan.nextInt();
+                    listausuarios.get(index).getSuscripciones().add(((Servicios)listaservicios.get(index)).getNombre());
                     break;
                 }
                 case 2: {
@@ -131,14 +132,14 @@ public class Examen1P2_AdrianBurgos {
         }
     }
     
-    public static void david(int index) {
+    public static void david() {
         int opcion = 0;
         while (opcion != 5) {
         System.out.println();
             System.out.print("==Bienvenido David==\n"
                     + "1. Agregar servicio\n"
-                    + "2. Agregar contenido a un servicio"
-                    + "3. Modifcar servicio\n"
+                    + "2. Agregar contenido a un servicio\n"
+                    + "3. Modificar servicio\n"
                     + "4. Eliminar servicio\n"
                     + "5. Logout\n"
                     + "Ingrese Opcion: ");
@@ -173,7 +174,7 @@ public class Examen1P2_AdrianBurgos {
                                 + "1. Añadir Serie\n"
                                 + "2. Añadir Miniserie\n"
                                 + "3. Añadir Pelicula\n"
-                                + "4. Salir\n"
+                                + "4. Dejar de agregar contenido\n"
                                 + "Ingrese Opcion: ");
                         opcion3 = scan.nextInt();
                         System.out.println();

@@ -7,7 +7,7 @@ public class Servicios {
     private String calificacion;
     private String fecha;
     private String empresa;
-    private ArrayList contenido;
+    private ArrayList contenido = new ArrayList();
 
     public Servicios(String nombre, double mensualidad, String calificacion, String fecha, String empresa) {
         this.nombre = nombre;
@@ -69,12 +69,16 @@ public class Servicios {
     @Override
     public String toString() {
         String servicios;
+        String tipodecontenido = "[";
+        for (int i = 0; i < contenido.size(); i++) {
+            tipodecontenido += contenido.get(i)+"\n";
+        }
+        tipodecontenido += "]";
         return "Nombre: "+nombre+"\n"
                 + "Mensualidad: "+mensualidad+"\n"
                 + "Calificacion: "+calificacion+"\n"
                 + "Fecha: "+fecha+"\n"
                 + "Empresa: "+empresa+"\n"
-                + "Contenido:\n"+contenido;
+                + "Contenido:\n"+tipodecontenido;
     }
-    
 }

@@ -9,7 +9,7 @@ public class Usuarios {
     private String correo;
     private int numero;
     private String plan;
-    private ArrayList <String> suscripciones;
+    private ArrayList <String> suscripciones = new ArrayList();
 
     public Usuarios(String user, String password) {
         this.user = user;
